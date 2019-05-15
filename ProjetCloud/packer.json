@@ -1,9 +1,9 @@
 {
    "variables": {
-    "SCALEWAY_ORGANIZATION": "{{env `SCALEWAY_ORGANIZATION`}}", #id de notre scaleway
+    "SCALEWAY_ORGANIZATION": "{{env `SCALEWAY_ORGANIZATION`}}", 
     "api_token": "{{env `SCW_TOKEN`}}",
-    "image": "9444d178-2285-4842-ac35-5e86eda8da91", #une certaine version de linux obligé d'avoir ça pour utiliser packer pareil sur mac avec IOS 
-    "ssh_private": "{{env `HOME`}}/.ssh/id_rsa" #ssh retrouvé sur le home de l'ordinateur 
+    "image": "9444d178-2285-4842-ac35-5e86eda8da91", 
+    "ssh_private": "{{env `HOME`}}/.ssh/id_rsa"
   },
 
 
@@ -13,14 +13,25 @@
       "api_token": "{{ user `api_token` }}",
       "server_name": "chloe", #nom du serveur
       "image_name": "chloe-image",
-      "snapshot_name": "chloe-snapshot", #copie a un instant t et tu peux réutiliser, comme une sauvegarde
+      "snapshot_name": "chloe-snapshot", 
       "image": "{{ user `image` }}",
       "region": "ams1",
       "commercial_type": "START1-S",
       "ssh_private_key_file": "{{ user `ssh_private` }}",
       "type": "scaleway",
-      "ssh_username": "root" #root tous les droits pour changer le programme
+      "ssh_username": "root" 
     }
   ]
+ "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "samba.yml"
+    },
+    {
+      "type": "shell",
+      "inline": ["sync"]
+    }
 
+  ]
+}
 }
