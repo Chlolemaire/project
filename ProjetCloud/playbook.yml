@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: no
+  become : yes
+
+  tasks:
+    raw: test -e /usr/bin/python || ([$(command -v apt)] && apt install -y python-minimal)
+    raw: test -e /usr/bin/python || ([$(command -v yum)] && yum install -y python)
+
+- hosts: web
+
+  roles:
+    - server
+    - php
+    - mysql
+    - wordpress
+...

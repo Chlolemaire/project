@@ -1,0 +1,2 @@
+[web]
+host1.example.org ansible_host=51.15.111.15 ansible_user=root
