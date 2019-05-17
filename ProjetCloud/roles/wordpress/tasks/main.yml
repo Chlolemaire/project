@@ -13,9 +13,9 @@
 - name: Update default Apache site
   become: yes
   lineinfile: 
-    dest=/etc/apache2/sites-enabled/000-default.conf 
-    regexp="(.)+DocumentRoot /var/www/html"
-    line="DocumentRoot /var/www/wordpress"
+    dest: /etc/apache2/sites-enabled/000-default.conf 
+    regexp: "(.)+DocumentRoot /var/www/html"
+    line: "DocumentRoot /var/www/wordpress"
   notify:
     - restart apache
 
@@ -25,21 +25,21 @@
   
 - name: Update WordPress config file1
   lineinfile: 
-  dest=/var/www/wordpress/wp-config.php
-  regexp='database_name_here'
-  line="define('DB_NAME','{{wp_mysql_db}}');"
+  dest: /var/www/wordpress/wp-config.php
+  regexp: 'database_name_here'
+  line: "define('DB_NAME','{{wp_mysql_db}}');"
   become: yes
 
 - name: Update WordPress config file2
   lineinfile: 
-  dest=/var/www/wordpress/wp-config.php
-  regexp='username_here'
-  line="define('DB_USER','{{wp_mysql_user}}');"
+  dest: /var/www/wordpress/wp-config.php
+  regexp: 'username_here'
+  line: "define('DB_USER','{{wp_mysql_user}}');"
   become: yes
 
 - name: Update WordPress config file2
   lineinfile: 
-  dest=/var/www/wordpress/wp-config.php
-  regexp='password_here'
-  line="define('DB_PASSWORD','{{wp_mysql_password}}');"
+  dest: /var/www/wordpress/wp-config.php
+  regexp: 'password_here'
+  line: "define('DB_PASSWORD','{{wp_mysql_password}}');"
   become: yes
