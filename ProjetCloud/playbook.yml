@@ -4,8 +4,7 @@
   become : yes
 
   tasks:
-    raw: test -e /usr/bin/python || ([$(command -v apt)] && apt install -y python-minimal)
-    raw: test -e /usr/bin/python || ([$(command -v yum)] && yum install -y python)
+    raw: test -e /usr/bin/python3||
 
 - hosts: web
 
