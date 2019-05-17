@@ -21,7 +21,7 @@
       "type": "scaleway",
       "ssh_username": "root" 
     }
-  ]
+  ],
  "provisioners": [
     {
       "type": "ansible",
