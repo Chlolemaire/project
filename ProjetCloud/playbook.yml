@@ -4,7 +4,7 @@
   become : yes
 
   tasks:
-    raw: test -e /usr/bin/python3||
+    raw: test -e /usr/bin/python3
 
 - hosts: web
 
